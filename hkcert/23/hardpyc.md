@@ -1,7 +1,7 @@
 # Decompetiton: hard.pyc (300 points, 9 solves)
 # 逆競賽: Py both
 
-By [`R1ckyH`](https://github.com/R1ckyH) and [`Sunny`](https://github.com/)
+By [`R1ckyH`](https://github.com/R1ckyH) and [`Sunny`](https://github.com/LoSunny)
 
 是咁的，請B6a還我眼睛，賠醫藥費！
 
@@ -32,9 +32,9 @@ Error decompyling pyhard.cpython-312.pyc: vector::_M_range_check: __n (which is 
 get = lambda : 
 ```
 
-Well ~~fuck b6a~~ we can find part of the code and save some time (really?)
+Well ~~fuck b6a python 3.12 reverse~~ we can find part of the `code` and save some time (really?)
 
-We use `pycdas` in pycdc to view the byte code
+We use `pycdas` in [`pycdc`](https://github.com/zrax/pycdc) to view the `bytecode`
 
 ```python
 pyhard.cpython-312.pyc (Python 3.12)
@@ -71,7 +71,7 @@ pyhard.cpython-312.pyc (Python 3.12)
         350     RAISE_VARARGS                 1
 ```
 
-After reverse these python bytecode hand by hand, we got the full code (maybe)~~Fuck B6a~~:
+After reverse these python `bytecode` hand by hand, we got the full `code` (95%) ~~Fuck B6a~~:
 
 ```python
 import webbrowser
@@ -122,11 +122,11 @@ wtf? we need `internal flag`? what is Internal flag?
 
 There is nothing about `internal flag` in the code!
 
-Well, let's try to run the code!
+Well, let's try to run the `code`!
 
 ```what is the key```
 
-well, let use show the bytecode of `data` with `dis`
+well, let use show the `bytecode` of `data` with python module `dis`
 
 ```python
 key = codeobj(*pickle.loads(data))
@@ -175,17 +175,17 @@ Names:
 
 By analyzing the code, we could see it first request the user to input a `Key`, which will be stored in a
 
-Then it compares if it matches “95b4e2a4-40c1-405d-bf63-B6c76f3cebd9"
+Then it compares if it matches `95b4e2a4-40c1-405d-bf63-B6c76f3cebd9`
 
-If it matches then it will set INITIAL_STATE to `c0mpl3xx`, else it will set to hex `00000000`.
+If it matches then it will set `INITIAL_STATE` to `c0mpl3xx`, else it will set to hex `00000000`.
 
 After retrieving the code, there is a `checker_gen` function, which will return a generator
 
-At the function attempt, we can see it will compare the output of checker_gen with each character in the flag.
+At the function attempt, we can see it will compare the output of `checker_gen` with each character in the `flag`.
 
-By understanding that concept, we can create a small `python` script to loop through all combinations of the flag.
+By understanding that concept, we can create a `python script` to loop through all combinations of the `flag`.
 
-```
+```python
 from Crypto.Util.number import long_to_bytes
 
 def checker_gen(ii, kk):
